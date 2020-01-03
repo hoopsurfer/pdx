@@ -11,7 +11,7 @@ Key features of pidesktop:
 - Improved systemd services
 - Rationalized file naming scheme
 
-The performance of X856 is nearly 10X my previous Pi Desktop solution so motivated a change.  The X735 has auto-power on, and expansion headers for an external momentary switch that provides support for reboot, shutdown, and forced power off. Interestingly, the Raspberry Pi 4 does not yet support boot from USB directly but it is a planned feature.  I expect this solution will evolve to use an NVME SSD using the USB-C port, possibly a simpler power managment board (X710?) and we'll see a case solution.  I've reached out to Geekworm with my recommendations on those points.
+The performance of X856 is nearly 10X my previous Pi Desktop solution so motivated a change.  The X735 has auto-power on, and expansion headers for an external momentary switch that provides support for reboot, shutdown, and forced power off. Interestingly, the Raspberry Pi 4 does not yet support boot from USB directly but it is a planned feature.  I expect this solution will evolve to use an NVME SSD using the USB-C port, possibly a simpler power managment board (X710?) and we'll see a case solution.  I've reached out to Geekworm with my recommendations on those points.  If you need to acquire here is where would start [looking for the kit](kit.md).
 
 *This is a work in progress*
 
