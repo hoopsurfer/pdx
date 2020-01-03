@@ -21,8 +21,8 @@ Setup and Install
 
 Hardware Documentatoin
 ----------------------
-[Geekworm/SupTronics X735] (http://www.raspberrypiwiki.com/index.php/X735#Document)
-[Geekworm/SupTronics X856] (http://www.raspberrypiwiki.com/index.php/X856#Document)
+[Geekworm X735](http://www.raspberrypiwiki.com/index.php/X735)
+[Geekworm X856](http://www.raspberrypiwiki.com/index.php/X856)
 
 ==========
 
