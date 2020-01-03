@@ -1,13 +1,15 @@
 Pi Desktop X V0.1
 =================
-This project provides software to support Geekworm's X856 for storage and X735 for power control to create a more PC-like experience for Raspberry Pi 4 (RPi4) I call Pi Desktop X.  This repository contains information on how to best use the X856 and a fork of the "offical" X730 power management board from http://geekworm.com sourced from SupTronics.  Because the RPi4 has made quite a few changes in HDMI, USB, and Network connections there are limited case options as I write this.  Combined, the X856 and X735 provide mSATA USB 3 Gen 1 Disk and power management integrated with the Raspberry Pi GPIO Connector.  Together they provide the missing mass storage, power management common in a desktop PC.   As I have it configured my RPi 4 has:
+This project provides software to support Geekworm's X856 for storage and X735 for power control to create a more PC-like experience for Raspberry Pi 4 (RPi4) I call Pi Desktop X.  This repository contains information on how to best use the X856 and a fork of the "offical" X730 power management board from http://geekworm.com sourced from SupTronics.  Because the RPi4 has made quite a few changes in HDMI, USB, and Network connections there are limited case options as I write this.  Combined, the X856 and X735 provide mSATA USB 3 Gen 1 Disk and power management integrated with the Raspberry Pi GPIO Connector.  Together they provide the missing mass storage, power management common in a desktop PC.   
 
-- Quadcore CPU
-- 4GB RAM
-- Gigabit Network
-- 5G Wifi and Bluetooth Wireless
-- USB 3.1 Gen 1 5Gbps 
-- Dual 4K monitors
+Key features of pidesktop:
+- Reliable reboot for mSATA SSD drives
+- Flash on boot to signal pidesktop support is enabled
+- Improved installation instructions (Raspian and Berryboot)
+- New pd-check command that provides detailed environment support
+- Improved logging information
+- Improved systemd services
+- Rationalized file naming scheme
 
 The performance of X856 is nearly 10X my previous Pi Desktop solution so motivated a change.  The X735 has auto-power on, and expansion headers for an external momentary switch that provides support for reboot, shutdown, and forced power off. Interestingly, the Raspberry Pi 4 does not yet support boot from USB directly but it is a planned feature.  I expect this solution will evolve to use an NVME SSD using the USB-C port, possibly a simpler power managment board (X710?) and we'll see a case solution.  I've reached out to Geekworm with my recommendations on those points.
 
