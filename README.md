@@ -19,7 +19,14 @@ Setup and Install
 -----------------
 [Fast Installation boot mSATA from SD](install.md) - Boot from mSATA USB with an existing SD card - cleanest
 
+Hardware Documentatoin
+----------------------
+[Geekworm/SupTronics X735] (http://www.raspberrypiwiki.com/index.php/X735#Document)
+[Geekworm/SupTronics X856] (http://www.raspberrypiwiki.com/index.php/X856#Document)
+
 ==========
+
+
 
 # x730-script
 This is the safe shutdown script for x730;
