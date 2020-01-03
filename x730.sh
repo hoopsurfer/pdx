@@ -15,7 +15,7 @@ echo "$BOOT" > /sys/class/gpio/export
 echo "out" > /sys/class/gpio/gpio$BOOT/direction
 echo "1" > /sys/class/gpio/gpio$BOOT/value
 
-echo "X730 Shutting down..."
+echo "PiDesktopX Shutting down..."
 
 while [ 1 ]; do
   shutdownSignal=$(cat /sys/class/gpio/gpio$SHUTDOWN/value)
@@ -63,7 +63,7 @@ if ! [[ $SLEEP =~ $re ]] ; then
    echo "error: sleep time not a number" >&2; exit 1
 fi
 
-echo "X730 Shutting down..."
+echo "PiDesktopX Shutting down..."
 /bin/sleep $SLEEP
 
 #restore GPIO 18
