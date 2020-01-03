@@ -1,0 +1,11 @@
+[Unit]
+Description=pidesktop reboot service
+DefaultDependencies=no
+Before=reboot.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python -u /usr/share/pidesktop/python/pd-reboot.py
+
+[Install]
+WantedBy=reboot.target

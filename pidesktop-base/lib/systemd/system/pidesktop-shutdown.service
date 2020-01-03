@@ -1,0 +1,11 @@
+[Unit]
+Description=pidesktop shutdown service
+DefaultDependencies=no
+Before=shutdown.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python -u /usr/share/pidesktop/python/pd-shutdown.py
+
+[Install]
+WantedBy=shutdown.target

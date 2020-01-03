@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# make new files and scripts excutable
+sudo chmod +x /usr/share/pidesktop/script/*
+sudo chmod +x /usr/share/pidesktop/python/*
+
+# links to make running manual installation steps easy
+sudo ln -sv /usr/share/pidesktop/script/pd-check /usr/bin/pd-check
+sudo ln -sv /usr/share/pidesktop/script/pd-clonessd /usr/bin/pd-clonessd
+sudo ln -sv /usr/share/pidesktop/python/pd-bootssd.py /usr/bin/pd-bootssd
+sudo ln -sv /usr/share/pidesktop/python/pd-fixrtc.py /usr/bin/pd-fixrtc
+
+# enable new sevices
+sudo systemctl enable pidesktop-powerkey.service
+sudo systemctl enable pidesktop-reboot.service
+sudo systemctl enable pidesktop-shutdown.service
+sudo systemctl list-unit-files | grep pidesktop
+
+# uncomment to autoclone SD to SSD
+#sudo /usr/share/pidesktop/python/pd-clonessd.py
+
+# fix up the rtc by default
+sudo /usr/share/pidesktop/python/pd-fixrtc.py
