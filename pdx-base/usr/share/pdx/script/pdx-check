@@ -7,7 +7,7 @@ uname -s -r -v -o
 
 # show scripts and python files
 echo -e "Raspberry Pi Desktop Experience (pdx)\n\n Script files:\n"
-ls -laR /usr/share/pidesktop/*
+ls -laR /usr/share/pdx/*
 
 # show links to pd- commands
 echo -e "\n Links to commands:\n"
