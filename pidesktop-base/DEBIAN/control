@@ -1,7 +1,0 @@
-Package: pdx-base
-Version: 0.1.2
-Section: free
-Priority: optional
-Architecture: all
-Maintainer: hoopsurfer
-Description: Pi Desktop eXperience Support

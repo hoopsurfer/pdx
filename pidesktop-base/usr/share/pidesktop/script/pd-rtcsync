@@ -1,4 +1,0 @@
-#!/bin/bash
-
-# Both shutdown and reboot will execute 
-sudo hwclock -w
