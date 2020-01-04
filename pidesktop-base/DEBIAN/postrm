@@ -1,22 +1,22 @@
 #!/bin/bash
 
 # files are cleaned up by package manager, but broken links need to be cleared
-sudo rm -f /usr/bin/pd-check
-sudo rm -f /usr/bin/pd-clonessd
-sudo rm -f /usr/bin/pd-bootssd
-sudo rm -f /usr/bin/pd-fixrtc
+sudo rm -f /usr/bin/pdx-check
+sudo rm -f /usr/bin/pdx-clonessd
+sudo rm -f /usr/bin/pdx-bootssd
+sudo rm -f /usr/bin/pdx-fixrtc
 
 # stop systemd services
-sudo systemctl stop pidesktop-powerkey.service
-sudo systemctl stop pidesktop-reboot.service
-sudo systemctl stop pidesktop-shutdown.service
-sudo systemctl disable pidesktop-powerkey.service
-sudo systemctl disable pidesktop-reboot.service
-sudo systemctl disable pidesktop-shutdown.service
+sudo systemctl stop pdx-powerkey.service
+sudo systemctl stop pdx-reboot.service
+sudo systemctl stop pdx-shutdown.service
+sudo systemctl disable pdx-powerkey.service
+sudo systemctl disable pdx-reboot.service
+sudo systemctl disable pdx-shutdown.service
 
 # remove any residual systemd files
-sudo rm -f /lib/systemd/system/pidesktop-*.service
-sudo rm -f /etc/systemd/system/*.target.wants/pidesktop-*.service
+sudo rm -f /lib/systemd/system/pdx-*.service
+sudo rm -f /etc/systemd/system/*.target.wants/pdx-*.service
 
-# other changes to consider... TODO: automate this
-echo "NOTE: The file /boot/config.txt may leave RTC enabled"
+# other changes to consider... TODO: future RTC support cleanup
+#echo "NOTE: The file /boot/config.txt may leave RTC enabled"
