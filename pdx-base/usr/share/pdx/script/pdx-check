@@ -6,16 +6,16 @@ dmesg --notime  | grep firmware
 uname -s -r -v -o
 
 # show scripts and python files
-echo -e "pidesktop\n\n Script files:\n"
+echo -e "Raspberry Pi Desktop Experience (pdx)\n\n Script files:\n"
 ls -laR /usr/share/pidesktop/*
 
 # show links to pd- commands
 echo -e "\n Links to commands:\n"
-ls -la /usr/bin/pd-*
+ls -la /usr/bin/pdx-*
 
 # show pidesktop sevices
 echo -e "\n Systemd services:\n"
-systemctl --plain --no-legend list-unit-files 'pidesktop-*'
+systemctl --plain --no-legend list-unit-files 'pdx-*'
 
 # show system and RTC clock details
 echo -e "\n System and hardware clocks:\n"
@@ -23,4 +23,4 @@ timedatectl status
 
 # show installed version
 echo -e "\n Package status:\n"
-dpkg -s pidesktop-base
+dpkg -s pdx-base
