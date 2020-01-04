@@ -1,6 +1,8 @@
 Pi Desktop X V0.1
 =================
-This project provides software to support Geekworm's X856 for storage and X735 for power control to create a more PC-like experience for Raspberry Pi 4 (RPi4) I call Pi Desktop X.  This repository contains information on how to best use the X856 and a fork of the "offical" X730 power management board from http://geekworm.com sourced from SupTronics.  Because the RPi4 has made quite a few changes in HDMI, USB, and Network connections there are limited case options as I write this.  Combined, the X856 and X735 provide mSATA USB 3 Gen 1 Disk and power management integrated with the Raspberry Pi GPIO Connector.  Together they provide the missing mass storage, power management common in a desktop PC.   
+This project provides software to support Geekworm's X856 for storage and X735 for power control to create a more PC-like experience for Raspberry Pi 4 (RPi4) I call Pi Desktop X.  This repository contains information on how to best use the X856 and a fork of the "offical" X730 power management board from http://geekworm.com sourced from SupTronics.  While the provided software works, it is brute force, uses too much CPU and is not well integrated with the OS.
+
+Because the RPi4 has made quite a few changes in HDMI, USB, and Network connections there are limited case options as I write this.  Combined, the X856 and X735 provide mSATA USB 3 Gen 1 Disk and power management integrated with the Raspberry Pi GPIO Connector.  Together they provide the missing mass storage, power management common in a desktop PC.   
 
 Key features of pidesktop:
 - Reliable reboot for mSATA SSD drives
