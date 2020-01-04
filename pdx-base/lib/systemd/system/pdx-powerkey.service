@@ -1,0 +1,10 @@
+[Unit]
+Description=pi desktop experience power button service
+After=local-fs.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python -u /usr/share/pdx/python/pdx-powerkey.py
+
+[Install]
+WantedBy=multi-user.target

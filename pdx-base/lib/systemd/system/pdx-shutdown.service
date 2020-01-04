@@ -1,0 +1,11 @@
+[Unit]
+Description=pi desktop experience shutdown service
+DefaultDependencies=no
+Before=shutdown.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python -u /usr/share/pdx/python/pdx-shutdown.py
+
+[Install]
+WantedBy=shutdown.target

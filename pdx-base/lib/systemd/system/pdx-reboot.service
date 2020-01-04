@@ -1,0 +1,11 @@
+[Unit]
+Description=pi desktop experience reboot service
+DefaultDependencies=no
+Before=reboot.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python -u /usr/share/pdx/python/pdx-reboot.py
+
+[Install]
+WantedBy=reboot.target

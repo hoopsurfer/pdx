@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# make new files and scripts excutable
+sudo chmod +x /usr/share/pdx/script/*
+sudo chmod +x /usr/share/pdx/python/*
+
+# links to make running manual installation steps easy
+sudo ln -sv /usr/share/pdx/script/pdx-check /usr/bin/pdx-check
+sudo ln -sv /usr/share/pdx/script/pdx-clonessd /usr/bin/pdx-clonessd
+sudo ln -sv /usr/share/pdx/python/pdx-bootssd.py /usr/bin/pdx-bootssd
+#sudo ln -sv /usr/share/pdx/python/pd-fixrtc.py /usr/bin/pdx-fixrtc
+
+# enable new sevices
+sudo systemctl enable pdx-powerkey.service
+sudo systemctl enable pdx-reboot.service
+sudo systemctl enable pdx-shutdown.service
+sudo systemctl list-unit-files | grep pdx
+
+# uncomment to autoclone SD to SSD
+#sudo /usr/share/pdx/python/pdx-clonessd.py
+
+# fix up the rtc by default - TODO RTC Support
+#sudo /usr/share/pdx/python/pd-fixrtc.py
