@@ -24,6 +24,16 @@ Hardware Documentatoin
 [Geekworm X735](http://www.raspberrypiwiki.com/index.php/X735)
 [Geekworm X856](http://www.raspberrypiwiki.com/index.php/X856)
 
+X735 working model - 
+
+read GPIO 4 for hardware reboot (short) or shutdow (longer) signals
+   OS must respond to this signal
+   reboot: power led flashes fast through reboot process, shutdown: led starts slow and gets faster until poweroff
+write GPIO17 system operational with GPIO 17 (stops reboot flashing light - stops on its own eventually - seems optional)
+write GPIO18 to siganl reboot (short) or shutdown (longer) signals
+   1-2 sec says reboot 3-7 says shutdown 8+ says power off immediately (crash)
+   essentially GPIO18 is like pressing the physical button on the board
+
 ==========
 
 
