@@ -9,10 +9,10 @@ sudo rm -f /usr/bin/pdx-fixrtc
 # stop systemd services
 sudo systemctl stop pdx-powerkey.service
 sudo systemctl stop pdx-reboot.service
-sudo systemctl stop pdx-shutdown.service
+sudo systemctl stop pdx-poweroff.service
 sudo systemctl disable pdx-powerkey.service
 sudo systemctl disable pdx-reboot.service
-sudo systemctl disable pdx-shutdown.service
+sudo systemctl disable pdx-poweroff.service
 
 # remove any residual systemd files
 sudo rm -f /lib/systemd/system/pdx-*.service

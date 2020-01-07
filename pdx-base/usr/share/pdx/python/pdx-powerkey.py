@@ -1,34 +1,55 @@
 #!/usr/bin/env python
 #
-# pd-powerkey.py - monitor GPIO to detect power key press from Power MCU (PCU)
+# pdx-powerkey.py - monitor GPIO to detect power key press from Power MCU (PCU)
 #
+# This code monitors power button on the X7xx without polling to minimize CPU utilization.
+# It turns hardware actions into software-based reboot and shutdown processing.
+# When booting, first we need to tell the PCU we are ready to process a button press.
+# If short press (reboot), then we detect both RISING and FALLING events from PCU as it 
+# initates fast "flash flash flash" LED, but on long press (shutdown), we only detect RISING 
+# event and PCU intiates slow "pulse" LED.
 
 import RPi.GPIO as GPIO
 import time,os,sys
 
-print("pidesktop: power button service initializing")
+print 'pdx: power button monitor - service starting'
 
-GPIO.setwarnings(False)
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(31,GPIO.OUT)  # Pi to PCU - start/stop shutdown timer
-GPIO.setup(33,GPIO.IN)   # PCU to Pi - detect power key pressed
+GPIO.setwarnings(False)  # do not display warnings
+GPIO.setmode(GPIO.BCM)   # use traditional numbering
+GPIO.setup(4,GPIO.IN)    # GPIO4 PCU to Pi - detect power key pressed
+GPIO.setup(17,GPIO.OUT)  # GPIO17 Pi to PCU - set active on boot
 
-GPIO.output(31,GPIO.LOW)  # tell PCU we are alive
-GPIO.output(31,GPIO.HIGH) # cause blink by starting shutdown timer
-time.sleep(0.5)
-GPIO.output(31,GPIO.LOW)  # clear timer we really are alive
+# inform PCU monitor is active. TODO: create a way to flash the power LED
+#GPIO.output(17,GPIO.LOW) # tell PCU to flash the LED
 
-# callback function
-def powerkey_pressed(channels):
-    print("pidesktop: power button press detected, initiating shutdown")
-    os.system("sync")
-    os.system("shutdown -h now")
-    sys.exit()
+monitor_start = time.time()  # starting monitor datetime
+print 'pdx: power button monitor - active on boot', time.asctime(time.localtime(monitor_start))
+GPIO.output(17,GPIO.HIGH) # tell PCU this system is active
 
-# wait for power key press
-print("pidesktop: power button monitor enabled")
-GPIO.add_event_detect(33,GPIO.RISING,callback=powerkey_pressed)
+GPIO.wait_for_edge(4, GPIO.RISING)  # wait forever for power button press
+monitor_press = time.time()
+print 'pdx: power button monitor - press detected at', time.asctime(time.localtime(monitor_press))
 
-# idle - TODO: use wait
-while True:
-    time.sleep(10)
+channel = GPIO.wait_for_edge(4, GPIO.FALLING, timeout=5000) # wait 5secs for button release     
+monitor_release = time.time()  # capture release or timeout
+print 'pdx: power button monitor - taking action after ', monitor_release - monitor_press
+
+# clean up GPIO use
+GPIO.cleanup()       # free up any GPIO related resources
+os.system("sync")    # flush any I/O for safety
+
+# power button monitor can determine short or long press based on channel
+if channel is 4:
+    # reboot
+    print "pdx: power button monitor - reboot initiated"
+    os.system("reboot")
+else:
+    # shutdown
+    print "pdx: power button monitor - shutdown initiated" 
+    os.system("shutdown -h now")        
+    
+print "pdx: power button monitor - service complete"     
+
+sys.exit()
+        
+

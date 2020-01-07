@@ -13,7 +13,7 @@ sudo ln -sv /usr/share/pdx/python/pdx-bootssd.py /usr/bin/pdx-bootssd
 # enable new sevices
 sudo systemctl enable pdx-powerkey.service
 sudo systemctl enable pdx-reboot.service
-sudo systemctl enable pdx-shutdown.service
+sudo systemctl enable pdx-poweroff.service
 sudo systemctl list-unit-files | grep pdx
 
 # uncomment to autoclone SD to SSD

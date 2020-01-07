@@ -1,25 +1,36 @@
 #!/user/bin/env python
 
-# pd-reboot.py - oneshot service so do your thing and exit
+# pdx-reboot.py - oneshot service so do your thing and exit
 #
-# We are in reboot processing either because reboot is running. 
+# We are in reboot processing because reboot has started for whatever reason.  
+# This code can do any needed reboot specific processing for power management.
+# The critical activity is a short press of the power button through GPIO18
 #
 import RPi.GPIO as GPIO
-import os
+import time,os,sys
+
+print 'pdx: reboot service - service initializing'
 
 GPIO.setwarnings(False)
-GPIO.setmode(GPIO.BOARD) # Use physical board pin numbering
-GPIO.setup(31,GPIO.OUT)  # Pi to Power MCU communication
-GPIO.setup(33,GPIO.IN)   # Power MCU to Pi on power button
+GPIO.setmode(GPIO.BCM)   # Use traditional pin numbering
+GPIO.setup(17, GPIO.OUT) # Pi to Power MCU system active
+GPIO.setup(18, GPIO.OUT) # Pi to Power MCU soft button press
+GPIO.setup(4, GPIO.IN)   # Power MCU to Pi on power button
 
-# In practice detecting power button press is unfortunately not reliable, message if detected
-if GPIO.input(33):
-	# Power Key was already pressed - shut the system down immediately
-	print("pidesktop: reboot service unexpected power button detected")
-else:
-	# reboot initiated do whatever is needed on reboot
-	# GPIO.output(31,GPIO.HIGH) #  tell power MCU and exit immediately
-	print("pidesktop: reboot service active")
+# disable the power button if it has not already been pressed
+if GPIO.input(4):
+	# Power button was pressed and we can tell
+	print 'pdx: reboot service - power button press detected'
+#else:
+	# reboot initiated, disable power button and do whatever is needed on reboot
+	#GPIO.output(17, GPIO.LOW)  # disable hardware power button
+	#print("pdx: reboot service - hardware power button disabled")
 
-# we're done
-print("pidesktop: reboot service completed")
+print 'pdx: reboot service - short press power button'
+GPIO.output(18, GPIO.HIGH) # short press soft power button
+time.sleep(2)              # reboot
+GPIO.output(18, GPIO.LOW)  # release soft power button
+
+GPIO.cleanup()		
+print 'pdx: reboot service - service complete'
+sys.exit()

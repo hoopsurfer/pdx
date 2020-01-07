@@ -1,0 +1,11 @@
+[Unit]
+Description=pi desktop experience poweroff service
+DefaultDependencies=no
+Before=poweroff.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python -u /usr/share/pdx/python/pdx-poweroff.py
+
+[Install]
+WantedBy=poweroff.target
