@@ -30,9 +30,9 @@ GPIO.wait_for_edge(4, GPIO.RISING)  # wait forever for power button press
 monitor_press = time.time()
 print 'pdx: power button monitor - press detected at', time.asctime(time.localtime(monitor_press))
 
-channel = GPIO.wait_for_edge(4, GPIO.FALLING, timeout=5000) # wait 5secs for button release     
+channel = GPIO.wait_for_edge(4, GPIO.FALLING, timeout=5000) # wait 5secs for button release
 monitor_release = time.time()  # capture release or timeout
-print 'pdx: power button monitor - taking action after ', monitor_release - monitor_press
+print 'pdx: power button monitor - taking action after', monitor_release - monitor_press
 
 # clean up GPIO use
 GPIO.cleanup()       # free up any GPIO related resources
@@ -42,14 +42,14 @@ os.system("sync")    # flush any I/O for safety
 if channel is 4:
     # reboot
     print "pdx: power button monitor - reboot initiated"
-    os.system("reboot")
+    os.system("systemctl reboot")
 else:
     # shutdown
-    print "pdx: power button monitor - shutdown initiated" 
-    os.system("shutdown -h now")        
-    
-print "pdx: power button monitor - service complete"     
+    print "pdx: power button monitor - poweroff initiated" 
+    os.system("systemctl poweroff")
+
+print "pdx: power button monitor - service complete"
 
 sys.exit()
-        
+
 

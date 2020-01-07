@@ -2,7 +2,7 @@
 
 # pdx-reboot.py - oneshot service so do your thing and exit
 #
-# We are in reboot processing because reboot has started for whatever reason.  
+# We are in reboot processing because reboot has started for whatever reason.
 # This code can do any needed reboot specific processing for power management.
 # The critical activity is a short press of the power button through GPIO18
 #
@@ -21,16 +21,20 @@ GPIO.setup(4, GPIO.IN)   # Power MCU to Pi on power button
 if GPIO.input(4):
 	# Power button was pressed and we can tell
 	print 'pdx: reboot service - power button press detected'
-#else:
-	# reboot initiated, disable power button and do whatever is needed on reboot
-	#GPIO.output(17, GPIO.LOW)  # disable hardware power button
-	#print("pdx: reboot service - hardware power button disabled")
 
-print 'pdx: reboot service - short press power button'
+# reboot initiated, enable power button and do whatever is needed on reboot
+print("pdx: reboot service - enable power control")
+GPIO.output(17, GPIO.HIGH)  # enable hardware power control
+
+print 'pdx: reboot service - short press power control'
 GPIO.output(18, GPIO.HIGH) # short press soft power button
-time.sleep(2)              # reboot
+time.sleep(1)              # reboot
 GPIO.output(18, GPIO.LOW)  # release soft power button
 
-GPIO.cleanup()		
+# disable power control now that reboot has been initiated
+print("pdx: reboot service - disable power control")
+GPIO.output(17, GPIO.HIGH)  # enable hardware power contro
+
+GPIO.cleanup()
 print 'pdx: reboot service - service complete'
 sys.exit()
