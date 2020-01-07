@@ -1,4 +1,4 @@
-pdx - a pi desktop experience
+pdx - pi desktop experience
 =============================
 This project provides software to support create a more PC-like experience for Raspberry Pi 4 (RPi4) I call Pi Desktop eXperience or pdx.  It uses Geekworm's X856 for storage and X735 for power control, but I reserve the right to change that over time.  This repository contains information on how to best use the X856 and a completely new approach to X730 power management board from http://geekworm.com sourced from SupTronics.  The original software worked, but was brute force, uses too much CPU and is not well integrated with the OS.  None of the code from the original script remains so this is not a fork of that code.  This is a second generation effort, the original was based on hardware from element14.
 
