@@ -1,6 +1,6 @@
 pdx - pi desktop experience
 =============================
-This project provides software to support create a more PC-like experience for Raspberry Pi 4 (RPi4) I call Pi Desktop eXperience or pdx.  It uses the Geekworm X856 for storage and X735 for power control, but I reserve the right to change that over time.  This repository contains information on how to best use the X856 and a completely new approach to X730 power management. The hardware is available at http://geekworm.com sourced from SupTronics. 
+This project provides software to support create a more PC-like experience for Raspberry Pi 4 (RPi4) I call Pi Desktop eXperience or pdx.  It uses the Geekworm X856 for storage and X735 for power control, but I reserve the right to change that over time.  This repository contains information on how to best use the X856 and a completely new approach to X735 for power management. The hardware is available at http://geekworm.com sourced from SupTronics. 
 
 Combined, the X856 and X735 provide mSATA USB 3 Gen 1 Disk and power management integrated with the Raspberry Pi GPIO Connector.  Together they provide the missing mass storage, power management common in a desktop PC. While there is no RTC, in practice that, for me, has been of little value because network time works so well.  Because the RPi4 has made quite a few changes in HDMI, USB, and Network ports there are limited case options as I write this. I expect that to change as RPi4 is adopted.
 
@@ -15,11 +15,43 @@ Key features of pdx:
 
 The performance of X856 is nearly 10X my previous Pi Desktop solution so that motivated a change.  The X735 has auto-power on, and expansion headers for an external momentary switch that provides support for reboot, shutdown, and forced power off. Interestingly, the Raspberry Pi 4 does not yet support boot from USB directly but it is a planned feature so an SD card is still required. boot/reboot times are fast.  I expect this solution will evolve to use an NVMe SSD using the USB-C port, possibly a simpler power managment board, perhaps a real time clock and a case solution.  I've reached out to Geekworm with my recommendations on those points.  If you need to acquire hardware here is where would start [looking for the kit](kit.md).
 
-*This is a work in progress*
+The code and .deb file works reliably for me and can be installed by downloading the .deb file.
 
 Setup and Install
 -----------------
-[Fast Installation boot mSATA from SD](install.md) - Boot from mSATA USB with an existing SD card - cleanest
+[Fast Installation boot mSATA from SD](install.md) - Boot from mSATA USB with an existing SD card - cleanest.
+
+systemd service files
+---------------------
+lib/systemd/system/pdx-poweroff.service which uses [pdx-poweroff.py](pdx-base/usr/share/pdx/python/pdx-poweroff.py)
+
+lib/systemd/system/pdx-reboot.service which uses [pdx-reboot.py](pdx-base/usr/share/pdx/python/pdx-reboot.py)
+
+lib/systemd/system/pdx-powerkey.service which uses [pdx-powerkey.py](pdx-base/usr/share/pdx/python/pdx-powerkey.py)
+
+package files
+-------------
+control - package control info
+
+postinst - post installation script
+
+postrm = post uninstall script
+
+building pidesktop-base
+-----------------------
+There is a simple Makefile to build pdx-base.deb file from sources if you clone or fork the repos.
+
+`make uninstall`   will uninstall the current pidesktop package
+`make clean`       will clean the build environment
+`make`             will make the .deb file
+`make install`     will install the rebuilt pidesktop package
+
+Or you can simply download the provided .deb file and install with the following command:
+
+`dpkg -i pdx-base.deb`
+
+If you want to change things you can clone this repository `make uninstall`, `make clean`, and make your changes to the underlying code, then `make` to build a new .deb package and install it with `make install`.
+
 
 Hardware Documentation from Geekworm
 ------------------------------------
