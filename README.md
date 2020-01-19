@@ -35,9 +35,9 @@ control - package control info
 
 postinst - post installation script
 
-postrm = post uninstall script
+postrm - post uninstall script
 
-building pidesktop-base
+building pdx-base
 -----------------------
 There is a simple Makefile to build pdx-base.deb file from sources if you clone or fork the repos.
 
@@ -50,8 +50,7 @@ Or you can simply download the provided .deb file and install with the following
 
 `dpkg -i pdx-base.deb`
 
-If you want to change things you can clone this repository `make uninstall`, `make clean`, and make your changes to the underlying code, then `make` to build a new .deb package and install it with `make install`.
-
+If you want to change things you can clone this repository `make uninstall`, `make clean`, and make your changes to the underlying code, then `make` to build a new .deb package and install it with `make install`.  You need to reboot for systemd changes to take effect.
 
 Hardware Documentation from Geekworm
 ------------------------------------
