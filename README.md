@@ -10,6 +10,7 @@ Key features of pdx:
 - Improved installation instructions (Raspian to start)
 - pdx-check command that provides detailed environment support
 - Integration with systemd services and hooks for reboot/poweroff
+- Implementation uses wait to minimize CPU use of monitors
 - well integrated with `systemctl` commands and legacy `reboot` or `shudown`
 - Integrated into Raspian's package manaager
 
@@ -67,7 +68,7 @@ read GPIO4 / Pin 7
 write GPIO17 / Pin 11 
 - system operational with GPIO 17, once enabled the PCU will observe GPIO18 signals, when not enabled the PCU will ignore GPIO18.
 
-write GPIO18 / Pin 12 to siganl reboot (short) or shutdown (longer) signals
+write GPIO18 / Pin 12 to signal reboot (short) or shutdown (longer) signals
 - 1-2 sec says reboot 3-7 says shutdown 8+ says power off immediately (crash)
 - essentially GPIO18 is the power button, the physical button on the board only generates signals and initiates LED flashing
 
