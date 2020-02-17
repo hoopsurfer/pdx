@@ -1,6 +1,6 @@
 pdx - pi desktop experience
 =============================
-This project provides software to support create a more PC-like experience for Raspberry Pi 4 (RPi4) I call Pi Desktop eXperience or pdx.  It uses the Geekworm X735 for power control and X856 for storage but I reserve the right to change that over time, I expect this could be used with X825 exactly as is with larger SSDs. This repository contains information on how to best use the X856 and a completely new approach to X735 for power management. The hardware is available at http://geekworm.com sourced from SupTronics. 
+This project provides software to support create a more PC-like experience for Raspberry Pi 4 (RPi4) I call Pi Desktop eXperience or pdx.  It uses the Geekworm X735 for power control and X856 for mSATA storage but I reserve the right to change that over time, I expect this could be used with X825 exactly as is with larger SSDs. This repository contains information on how to best use the X856 and a completely new approach to X735 for power management. The hardware is available at http://geekworm.com sourced from SupTronics. 
 
 Combined, the X735 and X856  provide power management and mSATA USB 3 Gen 1 Disk integrated with the Raspberry Pi GPIO Connector.  Together they provide the missing power management and storage common in a desktop PC. While there is no RTC, in practice that, for me, has been of little value because network time works so well.  Because the RPi4 has made quite a few changes in HDMI, USB, and Network ports there are limited case options as I write this. I expect that to change as RPi4 is adopted.
 
@@ -16,7 +16,7 @@ Key features of pdx:
 
 The performance of X856 is nearly 10X my previous Pi Desktop solution so that motivated a change.  The X735 has auto-power on, and expansion headers for an external momentary switch that provides support for reboot, shutdown, and forced power off. Interestingly, the Raspberry Pi 4 does not yet support boot from USB directly but it is a planned feature so an SD card is still required. boot/reboot times are fast.  I expect this solution will evolve to use an NVMe SSD using the USB-C port, possibly a simpler power managment board, perhaps a real time clock and a case solution.  I've reached out to Geekworm with my recommendations on those points.  If you need to acquire hardware here is where would start [looking for the kit](kit.md).
 
-The code and .deb file works reliably for me and can be installed by downloading the .deb file.
+The code and .deb file works reliably for me and can be installed by downloading the .deb file. The power control is coded using wait so it consumes minimal CPU.  When running just window manager it consumes between 0 and 1% CPU. 
 
 Setup and Install
 -----------------
