@@ -1,8 +1,8 @@
 pdx - pi desktop experience
 =============================
-This project provides software to support create a more PC-like experience for Raspberry Pi 4 (RPi4) I call Pi Desktop eXperience or pdx.  It uses the Geekworm X856 for storage and X735 for power control, but I reserve the right to change that over time.  This repository contains information on how to best use the X856 and a completely new approach to X735 for power management. The hardware is available at http://geekworm.com sourced from SupTronics. 
+This project provides software to support create a more PC-like experience for Raspberry Pi 4 (RPi4) I call Pi Desktop eXperience or pdx.  It uses the Geekworm X735 for power control and X856 for storage but I reserve the right to change that over time, I expect this could be used with X825 exactly as is with larger SSDs. This repository contains information on how to best use the X856 and a completely new approach to X735 for power management. The hardware is available at http://geekworm.com sourced from SupTronics. 
 
-Combined, the X856 and X735 provide mSATA USB 3 Gen 1 Disk and power management integrated with the Raspberry Pi GPIO Connector.  Together they provide the missing mass storage, power management common in a desktop PC. While there is no RTC, in practice that, for me, has been of little value because network time works so well.  Because the RPi4 has made quite a few changes in HDMI, USB, and Network ports there are limited case options as I write this. I expect that to change as RPi4 is adopted.
+Combined, the X735 and X856  provide power management and mSATA USB 3 Gen 1 Disk integrated with the Raspberry Pi GPIO Connector.  Together they provide the missing power management and storage common in a desktop PC. While there is no RTC, in practice that, for me, has been of little value because network time works so well.  Because the RPi4 has made quite a few changes in HDMI, USB, and Network ports there are limited case options as I write this. I expect that to change as RPi4 is adopted.
 
 Key features of pdx:
 - Reliable and fast reboot for mSATA SSD drives
@@ -60,12 +60,12 @@ Hardware Documentation from Geekworm
 
 X735 PCU working model
 -----------------------
-read GPIO4 / Pin 7
+read GPIO4 / Pin 7 to signal physical button press
 - hardware reboot (short) or shutdow (longer) signals
 - OS must respond to this signal
 - reboot: power led flashes fast through reboot process, shutdown: led starts slow and gets faster until poweroff
 
-write GPIO17 / Pin 11 
+write GPIO17 / Pin 11 to enable PCU activity
 - system operational with GPIO 17, once enabled the PCU will observe GPIO18 signals, when not enabled the PCU will ignore GPIO18.
 
 write GPIO18 / Pin 12 to signal reboot (short) or shutdown (longer) signals
@@ -81,4 +81,4 @@ physical power button
 
 Footnote
 --------
-The original software provided by Geekworm worked, but was brute force, used too much CPU, was not well integrated with the OS and required special commands to safely reboot or shutdown.  None of the code from the original scripts was used given this is a completely different approach, so while Geekwork is noted as a contributor here, it is their documentation that was used so this is not a fork of their code.  This is a second generation effort, the original was based on hardware from element14. If you are familiar with the original Pi Desktop product and my repo to support it, that solution suffered from poor firmware in power management, and I was reverse engineering the firmware when the Raspberry Pi 4 was released and made it clear that was not the path forward.  See https://github.com/hoopsurfer/pidesktop for that history.
+The original software provided by Geekworm worked, but was brute force, used too much CPU, was not well integrated with the OS and required special commands to safely reboot or shutdown.  None of the code from the original scripts was used given this is a completely different approach, so while Geekworm is noted as a contributor here, it is their documentation that was used so this is not a fork of their code.  This is a second generation effort, the original was based on hardware from element14. If you are familiar with the original Pi Desktop product and my repo to support it, that solution suffered from poor firmware in power management, and I was reverse engineering the firmware when the Raspberry Pi 4 was released and made it clear that was not the path forward.  See https://github.com/hoopsurfer/pidesktop for that history.
