@@ -16,7 +16,7 @@ Key features of pdx:
 
 The performance of X856 is nearly 10X my previous Pi Desktop solution so that motivated a change.  The X735 has auto-power on, and expansion headers for an external momentary switch that provides support for reboot, shutdown, and forced power off. Interestingly, the Raspberry Pi 4 does not yet support boot from USB directly but it is a planned feature so an SD card is still required. boot/reboot times are fast.  I expect this solution will evolve to use an NVMe SSD using the USB-C port, possibly a simpler power managment board, perhaps a real time clock and a case solution.  I've reached out to Geekworm with my recommendations on those points.  If you need to acquire hardware here is where would start [looking for the kit](kit.md).
 
-The code and .deb file works reliably for me and can be installed by downloading the .deb file. The power control is coded using wait so it consumes minimal CPU.  When running just window manager it consumes between 0 and 1% CPU. 
+The code and .deb file works reliably for me and can be installed by downloading the .deb file. The power control is coded using wait so it consumes minimal CPU.  When running just window manager it consumes between 0 and 1% CPU.
 
 Setup and Install
 -----------------
@@ -42,16 +42,16 @@ building pdx-base
 -----------------------
 There is a simple Makefile to build pdx-base.deb file from sources if you clone or fork the repos.
 
-`make uninstall`   will uninstall the current pidesktop package
+`make uninstall`   will uninstall the current pdx package
 `make clean`       will clean the build environment
 `make`             will make the .deb file
-`make install`     will install the rebuilt pidesktop package
+`make install`     will install the rebuilt pdx package
 
 Or you can simply download the provided .deb file and install with the following command:
 
 `dpkg -i pdx-base.deb`
 
-If you want to change things you can clone this repository `make uninstall`, `make clean`, and make your changes to the underlying code, then `make` to build a new .deb package and install it with `make install`.  You need to reboot for systemd changes to take effect.
+If you want to change things you can clone this repository `make uninstall`, `make clean`, edit the underlying code, then `make` to build a new .deb package and install it with `make install`.  You need to reboot for systemd changes to take effect.
 
 Hardware Documentation from Geekworm
 ------------------------------------
@@ -63,7 +63,7 @@ X735 PCU working model
 read GPIO4 / Pin 7 to signal physical button press
 - hardware reboot (short) or shutdow (longer) signals
 - OS must respond to this signal
-- reboot: power led flashes fast through reboot process, shutdown: led starts slow and gets faster until poweroff
+- reboot: power led flashes rapidly through reboot process, shutdown: led flashes slowly and gets faster until poweroff
 
 write GPIO17 / Pin 11 to enable PCU activity
 - system operational with GPIO 17, once enabled the PCU will observe GPIO18 signals, when not enabled the PCU will ignore GPIO18.
@@ -81,4 +81,4 @@ physical power button
 
 Footnote
 --------
-The original software provided by Geekworm worked, but was brute force, used too much CPU, was not well integrated with the OS and required special commands to safely reboot or shutdown.  None of the code from the original scripts was used given this is a completely different approach, so while Geekworm is noted as a contributor here, it is their documentation that was used so this is not a fork of their code.  This is a second generation effort, the original was based on hardware from element14. If you are familiar with the original Pi Desktop product and my repo to support it, that solution suffered from poor firmware in power management, and I was reverse engineering the firmware when the Raspberry Pi 4 was released and made it clear that was not the path forward.  See https://github.com/hoopsurfer/pidesktop for that history.
+The original software provided by Geekworm worked, but was brute force, used too much CPU, was not well integrated with the OS and required special commands to safely reboot or shutdown.  None of the code from the original scripts was used given this is a completely different approach, so while Geekworm is noted as a contributor here, it is their documentation that was used so this is not a fork of their code.  Also, this is a second generation effort for me, the original was based on hardware from element14 and an RPi3. The original Pi Desktop product suffered from poor firmware in power management, and I was reverse engineering the firmware when the Raspberry Pi 4 was released.  It quickly became clear that was not the path forward. See https://github.com/hoopsurfer/pidesktop for that history.
