@@ -1,11 +1,14 @@
 Setting up the X856 mSATA to USB3 Gen 1 Storage Adapter
 -------------------------------------------------------
 
-There are different approaches to setting up your SSD,  I chose to take a RPi4-only approach that requires no extra tools and minimal fiddlng with configuration files.  How you create your SD card is up to you so we assume for this you have an RPI4 that boots successfully from an SD card before we start with monitor(s) and keyboard and mouse operational.  Shutdown and power it off.
+There are different approaches to setting up your mSATA SSD,  I chose to take a Pi-only approach that requires no extra tools and minimal editing of configuration files.  How you create your SD card is up to you so we assume for this you have an RPI4 that boots successfully from an SD card before we start with monitor(s) and keyboard and mouse operational.  Shutdown, power it off by disconnecting power.
 
-1.  Assemble your X856 and make sure the USB3 to USB3 bridge connector is fully seated. Attached your mSATA SSD with two screws and make sure the SD Card is inserted.
-2. Make sure you have 3A or better power supply, a weak power supply will cause all sorts of random problems.
-3. Power on and it should boot up as normal.  You can check that the USB adapter is working using 
+1. Assemble your X856 and make sure the USB3 to USB3 bridge connector is fully seated. 
+1. Attach your mSATA SSD with two screws and make sure the SD Card is inserted.
+1, Assemble your X735 and make sure it is seated correctly on the GPIO pins.
+1. Make sure you have 3A or better USB C power adapter, a weak power supply will cause all sorts of random problems.
+1. Plug the power adapter into the X735 USB C connector, no other power should be connected to any 
+1. Power on and it should boot up as normal.  You can check that the USB adapter is working using 
 
 `sudo lsusb -v -d 174c:0856`
 
