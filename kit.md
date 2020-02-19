@@ -4,7 +4,7 @@ Build Your Own
 Raspberry Pi 4 Computer Model B 4GB and Power Supply
 ----------------------------------------------------
 - Broadcom BCM2711, quad-core Cortex-A72 (ARM v8) 64-bit SoC @ 1. 5GHz
-- 2. 4 GHz and 5. 0 GHz IEEE 802. 11b/g/n/ac wireless LAN, Bluetooth 5. 0, BLE
+- 2.4 GHz and 5.0 GHz IEEE 802. 11b/g/n/ac wireless LAN, Bluetooth 5. 0, BLE
 - 2 × USB 3. 0 ports, 2 x USB 2. 0 Ports
 - 2 × micro HDMI ports supproting up to 4Kp60 video resolution
 - Micro SD card slot for booting OS
