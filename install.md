@@ -7,7 +7,7 @@ There are different approaches to setting up your SSD,  I chose to take a RPi4-o
 2. Make sure you have 3A or better power supply, a weak power supply will cause all sorts of random problems.
 3. Power on and it should boot up as normal.  You can check that the USB adapter is working using 
 
-`sudo lsusb -v -d 174c:0856``
+`sudo lsusb -v -d 174c:0856`
 
 And you will find this info with the X856 model number if it is connected correctly:
 
