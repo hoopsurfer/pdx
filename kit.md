@@ -3,13 +3,12 @@ Build Your Own
 
 Raspberry Pi 4 Computer Model B 4GB and Power Supply
 ----------------------------------------------------
--Broadcom BCM2711, quad-core Cortex-A72 (ARM v8) 64-bit SoC @ 1. 5GHz
+- Broadcom BCM2711, quad-core Cortex-A72 (ARM v8) 64-bit SoC @ 1. 5GHz
 - 2. 4 GHz and 5. 0 GHz IEEE 802. 11b/g/n/ac wireless LAN, Bluetooth 5. 0, BLE
 - 2 × USB 3. 0 ports, 2 x USB 2. 0 Ports
 - 2 × micro HDMI ports supproting up to 4Kp60 video resolution
 - Micro SD card slot for booting OS
-https://www.adafruit.com/product/4296
-https://www.adafruit.com/product/4298
+https://www.adafruit.com/product/4296 https://www.adafruit.com/product/4298
 
 Geekworm X856 mSATA to USB 3 Adapter
 ------------------------------------
@@ -31,5 +30,5 @@ Geekworm X735 V2.1 Power Management
 - Onboard power switch
 - Connectors for Momentary or Latching switches
 - Safe shutdown function tested for Raspbian
-Power on, reboot or shutdown from button press
+- Power on, reboot or shutdown from button press
 https://geekworm.com/collections/raspberry-pi-4/products/raspberry-pi-x735-safe-shutdown-auto-cooling-expansion-board
