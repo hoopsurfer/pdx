@@ -12,7 +12,7 @@ Key features of pdx:
 - Integration with systemd services and hooks for reboot/poweroff
 - Implementation uses wait to minimize CPU use of monitors
 - well integrated with `systemctl` commands and legacy `reboot` or `shudown`
-- Integrated into Raspian's package manaager
+- Integrated into Raspian's package manager
 
 The performance of X856 is nearly 10X my previous Pi Desktop solution so that motivated a change.  The X735 has auto-power on, and expansion headers for an external momentary switch that provides support for reboot, shutdown, and forced power off. Interestingly, the Raspberry Pi 4 does not yet support boot from USB directly but it is a planned feature so an SD card is still required. boot/reboot times are fast.  I expect this solution will evolve to use an NVMe SSD using the USB-C port, possibly a simpler power managment board, perhaps a real time clock and a case solution.  I've reached out to Geekworm with my recommendations on those points.  If you need to acquire hardware here is where would start [looking for the kit](kit.md).
 
