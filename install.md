@@ -31,7 +31,7 @@ Bus 002 Device 002: ID 174c:0856 ASMedia Technology Inc.
 
 Which shows that your device is attached and can operate at 5Gbps rate.  Next we are going to format the SSD using the following commands:
 
-`sudo fidsk -l`        # to double check you have the right device as /dev/sda
+`sudo fidsk -l /dev/sda`        # to double check you have the right device as /dev/sda
 
 `sudo fdisk /dev/sda`  # to launch fdisk
 
@@ -42,13 +42,28 @@ Issue the following commands:
 - `n`  to create a new partition (take the defaults which is the full device)
 - `w`  to write your changes to disk - you may see an error, don't worry reboot
 
-Now you should have rebooted with a blank SSD with one partition, next let's format a parition
+Now you should have rebooted with a blank SSD with one partition, double check with fdisk: 
+
+`sudo fidsk -l /dev/sda`
+
+And you should see something like this:
+
+```
+Disk /dev/sda: 232.9 GiB, 250059350016 bytes, 488397168 sectors
+Disk model: SSD 860 EVO mSAT
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 33553920 bytes
+```
+
+Next let's format a parition:
 
 `sudo mkfs.ext4 /dev/sda1`
 
 Finally let's copy the root partition from the SD card to the SSD
 
 `sudo mount /dev/sda1 /media/pi`
+
 `sudo rsync -avx / /media/pi`
 
 To enable boot we add the  to /boot/cmdline.txt `root=/dev/sda1 rootfstype=ext4 rootwait`
