@@ -31,7 +31,7 @@ Bus 002 Device 002: ID 174c:0856 ASMedia Technology Inc.
 
 Which shows that your device is attached and can operate at 5Gbps rate.  Next we are going to format the SSD using the following commands:
 
-`sudo fidsk -l /dev/sda`        # to double check you have the right device as /dev/sda
+`sudo fdisk -l /dev/sda`        # to double check you have the right device as /dev/sda
 
 `sudo fdisk /dev/sda`  # to launch fdisk
 
@@ -44,7 +44,7 @@ Issue the following commands:
 
 Now you should have rebooted with a blank SSD with one partition, double check with fdisk: 
 
-`sudo fidsk -l /dev/sda`
+`sudo fdisk -l /dev/sda`
 
 And you should see something like this:
 
@@ -66,7 +66,47 @@ Finally let's copy the root partition from the SD card to the SSD
 
 `sudo rsync -avx / /media/pi`
 
-To enable boot we add the  to /boot/cmdline.txt `root=/dev/sda1 rootfstype=ext4 rootwait`
+To enable boot there are two approaches, first is brute force using the device name which generally would be by adding the following to /boot/cmdline.txt: 
+
+`root=/dev/sda1 rootfstype=ext4 rootwait`
+
+using:
 
 `sudo nano /boot/cmdline.txt`  use ^x, Y, enter to exit
+
+The better way is to use PARTUUID approach which uses a unique ID generated when creating partitions.  This is superior because it is possible that the root device (which is based on a USB port) could end up with a different device name (say /dev/sda2 instead of /dev/sda1.  The PARTUUID approach is a little more complex but more reliable.  
+
+First capture the PARTUUIDs for your partitions using `blkid` then add those to the boot partitions /boot/cmdline.txt and your new root partitions /etc/fstab as follows:
+
+`blkid`
+
+Which will provide an output like this:
+
+```
+/dev/mmcblk0p1: LABEL_FATBOOT="boot" LABEL="boot" UUID="9969-E3F2" TYPE="vfat" PARTUUID="97710275-01"
+/dev/mmcblk0p2: LABEL="rootfs" UUID="8f2a74a4-809c-471e-b4ad-a91bfd51d6e4" TYPE="ext4" PARTUUID="97709275-02"
+/dev/sda1: UUID="e6305a8f-3161-4ff2-9ef4-aec225c43e52" TYPE="ext4" PARTUUID="99130384-01"
+```
+
+You want the unique partition id (PARTUUID) from the SD card boot partition and the SSD partition.  So in the above example your SD card boot partitions /boot/cmdline.txt would be edited so it contained the root partition:
+
+`root=PARTUUID=99130384-01 rootfstype=ext4 rootwait`
+
+using:
+
+`sudo nano /boot/cmdline.txt`  use ^x, Y, enter to exit
+
+And edit in the SSD root partition /etc/fstab to contain both the boot and root partition ids which would like this using the above example:
+
+`sudo nano media/pi/*/etc/fstab`
+
+```
+PARTUUID=97709275-01  /boot           vfat    defaults          0       2
+PARTUUID=99130834-01  /               ext4    defaults,noatime  0       1
+```
+
+MAKE SURE YOU USE YOUR PARTUUIDs not those from the example here and note that it is easy to flip back to SD card booting if you have to by editing /boot/cmdline.txt using 'blkid' to retrieve the PARTUUID for the SD card root partition.  Once you have made these changes double check them and reboot.  If you made an error in your edits you may need to put the SD card in a card reader and edit the /boot/cmdline.txt file back to SD card.   Assuming your edits are correct reboot and your system should boot up using the SSD root partition.
+
+Note that for RPi3 you can boot directly from USB and I am not covering this here, for RPi4 there is a commitment to improve the firmware to support direct boot from USB, we'll update this when the firmware is available.
+
 
