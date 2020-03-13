@@ -25,7 +25,7 @@ if GPIO.input(4):
 
 # poweroff initiated enable power control
 GPIO.output(17, GPIO.HIGH)  # enable power control
-print("pdx: shutdown service - power control enabled")
+print("pdx: poweroff service - power control enabled")
 
 print 'pdx: poweroff service - long press power button'
 GPIO.output(18, GPIO.HIGH) # long press soft power button
