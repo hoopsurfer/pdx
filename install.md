@@ -1,5 +1,5 @@
-Setting up the X856 mSATA to USB3 Gen 1 Storage Adapter
-=======================================================
+Setting up the X856 mSATA to USB3 Gen 1 Adapter
+===============================================
 
 There are different approaches to setting up your mSATA SSD,  I chose to take a Pi-only approach that requires no extra tools and minimal editing of configuration files.  How you create your SD card is up to you so we assume for this you have an RPI4 that boots successfully from an SD card before we start with monitor(s) and keyboard and mouse operational.  Shutdown, power it off by disconnecting power.
 
