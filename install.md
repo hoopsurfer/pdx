@@ -1,11 +1,11 @@
 Setting up the X856 mSATA to USB3 Gen 1 Storage Adapter
--------------------------------------------------------
+=======================================================
 
 There are different approaches to setting up your mSATA SSD,  I chose to take a Pi-only approach that requires no extra tools and minimal editing of configuration files.  How you create your SD card is up to you so we assume for this you have an RPI4 that boots successfully from an SD card before we start with monitor(s) and keyboard and mouse operational.  Shutdown, power it off by disconnecting power.
 
 1. Assemble your X856 and make sure the USB3 to USB3 bridge connector is fully seated. 
 1. Attach your mSATA SSD with two screws and make sure the SD Card is inserted.
-1, Assemble your X735 and make sure it is seated correctly on the GPIO pins.
+1. Assemble your X735 and make sure it is seated correctly on the GPIO pins.
 1. Make sure you have 3A or better USB C power adapter, a weak power supply will cause all sorts of random problems.
 1. Plug the power adapter into the X735 USB C connector, no other power should be connected to any 
 1. Power on and it should boot up as normal.  You can check that the USB adapter is working using 
@@ -105,7 +105,7 @@ PARTUUID=97709275-01  /boot           vfat    defaults          0       2
 PARTUUID=99130834-01  /               ext4    defaults,noatime  0       1
 ```
 
-MAKE SURE YOU USE YOUR PARTUUIDs not those from the example here and note that it is easy to flip back to SD card booting if you have to by editing /boot/cmdline.txt using 'blkid' to retrieve the PARTUUID for the SD card root partition.  Once you have made these changes double check them and reboot.  If you made an error in your edits you may need to put the SD card in a card reader and edit the /boot/cmdline.txt file back to SD card.   Assuming your edits are correct reboot and your system should boot up using the SSD root partition.
+MAKE SURE YOU USE YOUR PARTUUIDs not those from the example here and note that it is easy to flip back to SD card booting if you have to by editing /boot/cmdline.txt using 'blkid' to retrieve the PARTUUID for the SD card root partition.  Once you have made these changes double check them and reboot.  If you made an error in your edits you may need to put the SD card in a card reader and edit the /boot/cmdline.txt file back to SD card. Assuming your edits are correct reboot and your system should boot up using the SSD root partition.
 
 Note that for RPi3 you can boot directly from USB and I am not covering this here, for RPi4 there is a commitment to improve the firmware to support direct boot from USB, we'll update this when the firmware is available.
 
