@@ -32,9 +32,12 @@ GPIO.output(18, GPIO.HIGH) # long press soft power button
 time.sleep(3)              # poweroff
 GPIO.output(18, GPIO.LOW)  # release soft power button
 
+# wait for shutdown processing to take place
+time.sleep(3)              # processing
+
 # poweroff initiated disable power control
 GPIO.output(17, GPIO.LOW)  # disable power control
-print('pdx: shutdown service - power control disabled')
+print('pdx: poweroff service - power control disabled')
 
 #  unmount SD card to clean up logs
 #print("pdx: poweroff service - unmounting SD card")
