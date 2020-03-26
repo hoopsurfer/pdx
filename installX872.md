@@ -151,10 +151,9 @@ PARTUUID=99130834-01  /               ext4    defaults,noatime  0       1
 
 MAKE SURE you use your PARTUUIDs not those from the example here and once you have made these PARTUUID changes double check them and reboot.  
 
-If you made an error in your edits you may need to put the SD card in a card reader and copy the /boot/cmdline.sd file back to /boot/cmdline.txt then boot the SD card and look for mistakes.  In my case I've made several mistakes even just testing this.  Once I had an extra PARTUUID= in the cmdline.txt file.  Another time I had quotes copied from blkid output.  Assuming your edits are correct reboot and your system should boot up using the SSD root partition.  It is worth taking a look at journalctl and search for X872 to find 
+It is worth taking a look at journalctl and search for the product id 0583 to see what is happening:
 
-
-````
+```
 journalctl
 
 Mar 16 19:53:15 raspberrypi kernel: usb 2-2: new SuperSpeed Gen 1 USB device number 2 using xhci_hcd
@@ -167,10 +166,6 @@ Mar 16 19:53:15 raspberrypi kernel: scsi host0: uas
 Mar 16 19:53:15 raspberrypi kernel: scsi 0:0:0:0: Direct-Access     NVME                      0208 PQ: 0 ANSI: 6
 ```
 
+To verify it is booting correctly you can use the command `findmnt -n -o SOURCE /` to verify you have the correct root device. If you made an error in your edits you may need to put the SD card in a card reader and copy the /boot/cmdline.sd file back to /boot/cmdline.txt then boot the SD card and look for mistakes.  In my case I've made several mistakes even just testing this.  Once I had an extra PARTUUID= in the cmdline.txt file.  Another time I had quotes copied from blkid output.  Assuming your edits are correct after a reboot your system should boot up using the SSD root partition.  
+
 Note that for RPi3 you can boot directly from USB and I am not covering this here, for RPi4 there is a commitment to improve the firmware to support direct boot from USB, we'll update this when the firmware is available.
-
-Performance Benchmarks
-
-Using Samsung Magician on Windows 10
-Samsung NVMe SSD 960 EVO 250GB
-Samsung NVMe SSD 970 EVO 500GB  Seq Read 3571 MB/s, Seq Write 2490 MB/s, Random Read 257,324 IOPS, Random Write 236,328 IOPS
