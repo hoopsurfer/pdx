@@ -1,5 +1,5 @@
 [Unit]
-Description=pi desktop experience poweroff service
+Description=pdx poweroff service
 DefaultDependencies=no
 Before=poweroff.target
 

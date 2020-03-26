@@ -1,5 +1,5 @@
 [Unit]
-Description=pi desktop experience reboot service
+Description=pdx reboot service
 DefaultDependencies=no
 Before=reboot.target
 

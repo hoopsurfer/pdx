@@ -1,5 +1,5 @@
 [Unit]
-Description=pi desktop experience power button service
+Description=pdx power button service
 After=local-fs.target
 
 [Service]
