@@ -1,4 +1,4 @@
-Setting up the X872 NVMe to USB3 Gen 1 Adapter
+Setting up the X872 NVMe to USB3 Gen 2 Adapter
 ===============================================
 
 There are different approaches to setting up your NVMe SSD,  I chose to take a Pi-only approach that requires no extra tools and minimal editing of configuration files.  This results in a single partition on your SSD, long term it might be better to have a boot partition on the SSD, but for new we'll keep it simple.
@@ -51,7 +51,7 @@ And you will find this info with the X872 model number if it is connected correc
       Speed Attribute ID: 0 10Gb/s Symmetric TX SuperSpeedPlus
 ```
 
-Which shows that your device is attached and can operate at 10Gb/s rate!  Unfortunately the USB 3 Gen 1 port on the RPi4 is limited to 5Gbps so we'll have to live with that.  You can also look at the boot log information with `journalctl` and search for `usb 2 2` and you will see:
+Which shows that your device is attached and can operate at 10Gb/s rate!  Unfortunately the USB 3 Gen 1 port on the RPi4 is limited to 5Gbps so we'll have to live with that.  You can also look at the boot log information with `journalctl` and search for `usb 2-2` and you will see:
 
 ```
 Mar 16 19:53:15 raspberrypi kernel: usb 2-2: new SuperSpeed Gen 1 USB device number 2 using xhci_hcd
