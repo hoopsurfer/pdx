@@ -20,7 +20,8 @@ The code and .deb file works reliably for me and can be installed by downloading
 
 Setup and Install
 -----------------
-[Fast Installation boot mSATA from SD](install.md) - Boot from mSATA USB with an existing SD card - cleanest.
+[Fast Installation boot mSATA from SD](installX856.md) - Boot from mSATA SSD & USB with an existing SD card - cleanest.
+[Fast Installation boot mSATA from SD](installX872.md) - Boot from NVMe SSD & USB with an existing SD card - cleanest.
 
 systemd service files
 ---------------------
