@@ -1,6 +1,8 @@
 Setting up the X872 NVMe to USB3 Gen 2 Adapter
 ===============================================
 
+**NOTE: I HAVE FOUND X872 UNRELIABLE, UNTIL I CAN DETERMINE WHY IT FAILS, I WOULD NOT RECOMMEND USING THIS ADDON CARD**
+
 There are different approaches to setting up your NVMe SSD,  I chose to take a Pi-only approach that requires no extra tools and minimal editing of configuration files.  This results in a single partition on your SSD, long term it might be better to have a boot partition on the SSD, but for new we'll keep it simple.
 
 How you create your SD card is up to you, likely the easiest is using a PC using the new official Raspberry Pi tool which will download and write the image to your SD card, but here we assume for this you have an RPI4 that boots successfully from an SD card before we start with monitor(s) and keyboard and mouse operational.  When you boot Raspian the first time you should go through localizing and apply the latest updates, once you are ready to boot from your new X872 adapter shutdown, power it off by disconnecting power.
