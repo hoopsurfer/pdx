@@ -107,6 +107,16 @@ PARTUUID=99130834-01  /               ext4    defaults,noatime  0       1
 
 MAKE SURE YOU USE YOUR PARTUUIDs not those from the example here and note that it is easy to flip back to SD card booting if you have to by editing /boot/cmdline.txt using 'blkid' to retrieve the PARTUUID for the SD card root partition.  Once you have made these changes double check them and reboot.  If you made an error in your edits you may need to put the SD card in a card reader and edit the /boot/cmdline.txt file back to SD card. Assuming your edits are correct reboot and your system should boot up using the SSD root partition.
 
+The final step is overclocking your machine, make sure you active cooling (such as the Geekwork X735 that pdx supports).  Add the following lines to your /boot/config.txt file in the `[pi4]` section.
+
+`sudo nano /boot/config.txt`
+
+```
+over_voltage=4
+arm_freq=2000
+gpu_freq=600
+```
+
 Note that for RPi3 you can boot directly from USB and I am not covering this here, for RPi4 there is a commitment to improve the firmware to support direct boot from USB, we'll update this when the firmware is available.
 
 
