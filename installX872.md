@@ -1,7 +1,7 @@
 Setting up the X872 NVMe to USB3 Gen 2 Adapter
 ===============================================
 
-**NOTE: I HAVE FOUND X872 WORKS, BUT IS UNRELIABLE FOR ME, ESPECIALLY AFTER SHUTDOWN OR REBOOT AND IS VERY SENSITIVE (PLUGGING IN ANOTHER USB DEVICE CRASHES THE PI4). UNTIL IT CAN BE DETERTMINED WHY IT FAILS, I WOULD NOT RECOMMEND USING THIS ADDON CARD**
+**NOTE: I HAVE FOUND X872 WORKS, BUT IS UNRELIABLE FOR ME, ESPECIALLY AFTER SHUTDOWN OR REBOOT AND IS VERY SENSITIVE (PLUGGING IN ANOTHER USB DEVICE CRASHES THE PI4). UNTIL IT CAN BE DETERTMINED WHY IT FAILS, I WOULD NOT RECOMMEND USING THIS ADDON CARD.  Weith a second card I have found idProduct of 0x0583 shown below and also 0x0562 - I have not determined if there is a difference**
 
 There are different approaches to setting up your NVMe SSD,  I chose to take a Pi-only approach that requires no extra tools and minimal editing of configuration files.  This results in a single partition on your SSD, long term it might be better to have a boot partition on the SSD, but for now we'll keep it simple.
 
@@ -14,7 +14,7 @@ How you create your SD card is up to you, likely the easiest is using a PC using
 1. Plug the power adapter into the X735 USB C connector, no other power should be connected to any port
 1. Power on and it should boot up as normal.  You can check that the USB adapter is working using:
 
-`sudo lsusb -v -d 152d:0583`
+`sudo lsusb -v -d 152d:`
 
 And you will find this info with the X872 model number if it is connected correctly:
 
