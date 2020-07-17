@@ -1,7 +1,7 @@
 Setting up the X872 NVMe to USB3 Gen 2 Adapter
 ===============================================
 
-**NOTE: I HAVE FOUND X872 WORKS, BUT IS UNRELIABLE FOR ME, ESPECIALLY AFTER SHUTDOWN OR REBOOT AND IS VERY SENSITIVE (PLUGGING IN ANOTHER USB DEVICE CRASHES THE PI4). UNTIL IT CAN BE DETERTMINED WHY IT FAILS, I WOULD NOT RECOMMEND USING THIS ADDON CARD.  Weith a second card I have found idProduct of 0x0583 shown below and also 0x0562 - I have not determined if there is a difference**
+**NOTE: I HAVE FOUND X872 WORKS, BUT IS UNRELIABLE FOR ME, ESPECIALLY AFTER SHUTDOWN OR REBOOT AND IS VERY SENSITIVE (PLUGGING IN ANOTHER USB DEVICE CRASHES THE PI4). UNTIL IT CAN BE DETERTMINED WHY IT FAILS, I WOULD NOT RECOMMEND USING THIS ADDON CARD.  With a second card I have found idProduct of 0x0583 shown below and also 0x0562 from a newer card - I have not determined if there is a difference**
 
 There are different approaches to setting up your NVMe SSD,  I chose to take a Pi-only approach that requires no extra tools and minimal editing of configuration files.  This results in a single partition on your SSD, long term it might be better to have a boot partition on the SSD, but for now we'll keep it simple.
 
