@@ -7,15 +7,15 @@ There are different approaches to setting up your NVMe SSD,  I chose to take a s
 
 How you create your SD card is up to you, likely the easiest is using a PC using the new official Raspberry Pi SD tool which will download and write an OS image to your SD card, but here we assume for this you have a Pi 4 that boots successfully from an SD card with monitor(s) and keyboard and mouse operational. When you boot Raspian the first time you should go through localizing and apply the latest updates, check that you don't need any updates by using `sudo apt update` and if needed `sudo apt full-upgrade` to apply any missing updates.
 
-Once your SD card is ready to boot from your new X872 adapter shutdown, power it off by disconnecting power.
+Once your SD card is ready to go, power off your Pi4 and disconnect power.
 
 1. Attach your NVMe SSD to the M.2 slot of your X872 with a screw.
 1. Assemble your X872 and connect it with the provided standoffs to the Pi 4.
-1. Assemble your X735 and make sure it is seated correctly on the GPIO pins.
+1. Assemble your X735 and make sure it is seated correctly on the GPIO pins and using the provided standoffs.
 1. Insert the 2 pin connector cable from the 5V OUT port on the X735 to the 5V port on the X872.
 1. Insert the SD Card made above and make sure it is seated properly in the SD slot of your Pi 4.
-1. Attach the assembled X735, Pi 4, and X872 to the X857-C1 case and connect the power switch. NOTE: I did not use the additional case fan because the V5 OUT port on the X735 is used for the X872. 
-1. Insert the USB3 to USB3 bridge connector to connect the Pi 4 USB 3 port and the X872. 
+1. Attach the assembled X735+Pi 4+X872 to the X857-C1 case and connect the power switch. NOTE: I did not use the additional case fan because the V5 OUT port on the X735 is used for the X872 and it already has a fan which seems to work fine for controlling temperature under load. 
+1. Insert the USB3 to USB3 bridge connector to connect the Pi 4 bottom USB 3 port and the X872. 
 1. Make sure you have 3A or better power adapter, a weak power supply will cause all sorts of random problems.  NOTE: If you use the Geekworm 5v 4A adapter with a barrel plug, it frees the USB C port for useful work.
 1. Plug the power adapter into one X735 connector (5V Barrel or USB C), no other power should be connected to any port into the case.
 1. Power on by pressing the power button and it should boot up as normal using the SD Card.  You can check that the USB adapter is working using:
