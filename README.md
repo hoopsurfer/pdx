@@ -24,6 +24,8 @@ Setup and Install
 
 [Fast Installation boot NVMe from SD](installX872.md) - Boot from NVMe SSD & USB with an existing SD card - cleanest.
 
+[TODO: Capture overclocking instructions, stability testing, and overall system benchmark.]
+
 systemd service files
 ---------------------
 lib/systemd/system/pdx-poweroff.service which uses [pdx-poweroff.py](pdx-base/usr/share/pdx/python/pdx-poweroff.py)
