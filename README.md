@@ -22,7 +22,19 @@ The code and .deb file works reliably for me and can be installed by downloading
 
 Setup and Install
 -----------------
-How you create your SD card is up to you, likely the easiest is using a PC using the new official Raspberry Pi SD tool which will download and write an OS image to your SD card, but here we assume for this you have a Pi 4 that boots successfully from an SD card with monitor(s) and keyboard and mouse operational. When you boot Raspian the first time you should go through localizing and apply the latest updates, check that you don't need any updates by using `sudo apt update` and if needed `sudo apt full-upgrade` to apply any missing updates.  Once your system is updated, you can immediately install the pdx code so the moment you get the hardwire setup it will work correctly.  To install the pdx code download [pdx-base.deb](https://github.com/hoopsurfer/pdx), however if you wish to wait until you are booting from your SSD the instructions will remind you to do that as well.
+How you create your SD card is up to you, likely the easiest is using a PC using the new official Raspberry Pi SD tool which will download and write an OS image to your SD card, but here we assume for this you have a Pi 4 that boots successfully from an SD card with monitor(s) and keyboard and mouse operational. When you boot Raspian the first time you should go through localizing and apply the latest updates, check that you don't need any updates by using `sudo apt update` and if needed `sudo apt full-upgrade` to apply any missing updates.  This will update all the OS files including eeprom that support boot from USB and sets the default to boot from USB when there is no SD card.  Here are the steps t make sure you perform:
+
+```
+# update everything including the rpi-eeprom package                                                                                                 
+sudo apt update
+sudo apt full-upgrade
+# Check the current eeprom version
+sudo rpi-eeprom-update     
+# Update to latest boot firmware
+sudo rpi-eeprom-update -a
+```
+
+Once your system is updated, you can immediately install the pdx code so the moment you get the hardwire setup it will work correctly.  To install the pdx code download [pdx-base.deb](https://github.com/hoopsurfer/pdx), however if you wish to wait until you are booting from your SSD the instructions will remind you to do that as well.
 
 Once your SD card is ready to go, power off your Pi4 and disconnect power so you can install all the required hardware.
 
