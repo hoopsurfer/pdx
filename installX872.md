@@ -5,10 +5,6 @@ Setting up the X872 NVMe to USB3 Gen 2 Adapter
 
 There are different approaches to setting up your NVMe SSD,  I chose to take a simple Pi-only approach that requires no extra tools and minimal editing of configuration files.  This results in a boot partition and root partition on your NVMe SSD that are appropriately sized.  Since this project is all about creating a desktop capabable system, we only discuss Pi 4 8GB model here, but this should work with any Pi 4 model.
 
-How you create your SD card is up to you, likely the easiest is using a PC using the new official Raspberry Pi SD tool which will download and write an OS image to your SD card, but here we assume for this you have a Pi 4 that boots successfully from an SD card with monitor(s) and keyboard and mouse operational. When you boot Raspian the first time you should go through localizing and apply the latest updates, check that you don't need any updates by using `sudo apt update` and if needed `sudo apt full-upgrade` to apply any missing updates.
-
-Once your SD card is ready to go, power off your Pi4 and disconnect power.
-
 1. Attach your NVMe SSD to the M.2 slot of your X872 with a screw.
 1. Assemble your X872 and connect it with the provided standoffs to the Pi 4.
 1. Assemble your X735 and make sure it is seated correctly on the GPIO pins and using the provided standoffs.
