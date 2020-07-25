@@ -16,7 +16,7 @@ Key features of pdx:
 - No unique commands needed to properly shudown or reboot required
 - details on how to overclock and tools to test settings to get better performance 
 
-The performance of X872 is more than 10X my previous Pi Desktop solution so that motivated a change.  The X735 has auto-power on, and expansion headers for an external momentary switch that provides support for reboot, shutdown, and forced power off.  The Raspberry Pi 4 now is available with 8GB RAM and offically supports boot directly from USB directly with no SD required. Boot and reboot times are fast.  Geekworm has been a great partner answering questions and provides excellent technical support and they welcomeed my recommendations. If you need to acquire hardware here is where would start [looking for the kit](kit.md).
+The performance of X872 is more than 10X my previous Pi Desktop solution so that motivated a change.  The X735 has auto-power on, and expansion headers for an external momentary switch that provides support for reboot, shutdown, and forced power off.  The Raspberry Pi 4 now is available with 8GB RAM and offically supports boot from USB directly with no SD card required. Boot and reboot times are fast.  Geekworm has been a great partner answering questions and provides excellent technical support and they welcomeed my recommendations. If you need to acquire hardware here is where would start [looking for the kit](kit.md).
 
 The code and .deb file works reliably for me and can be installed by downloading the .deb file. The power control is coded using wait so it consumes minimal CPU.  When running just window manager it consumes between 0 and 1% CPU.  I suppose registering the package so it is even easier to install would be a good idea.
 
