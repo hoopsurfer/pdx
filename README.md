@@ -22,13 +22,15 @@ The code and .deb file works reliably for me and can be installed by downloading
 
 Setup and Install
 -----------------
+How you create your SD card is up to you, likely the easiest is using a PC using the new official Raspberry Pi SD tool which will download and write an OS image to your SD card, but here we assume for this you have a Pi 4 that boots successfully from an SD card with monitor(s) and keyboard and mouse operational. When you boot Raspian the first time you should go through localizing and apply the latest updates, check that you don't need any updates by using `sudo apt update` and if needed `sudo apt full-upgrade` to apply any missing updates.  Once your system is updated, you can immediately install the pdx code so the moment you get the hardwire setup it will work correctly.  To install the pdx code download [pdx-base.deb](https://github.com/hoopsurfer/pdx), however if you wish to wait until you are booting from your SSD the instructions will remind you to do that as well.
 
-[Fast Installation boot NVMe from SD](installX872.md) - Boot from NVMe SSD & USB with an existing SD card - cleanest.
+Once your SD card is ready to go, power off your Pi4 and disconnect power so you can install all the required hardware.
+
+[Fast Installation to boot NVMe from SD](installX872.md) - Boot from NVMe SSD & USB with an existing SD card - cleanest.
 
 [Fast Installation boot mSATA from SD](installX856.md) - Boot from mSATA SSD & USB with an existing SD card - needs to be updated.
 
 [TODO: Capture overclocking instructions, stability testing, and overall system benchmark.]
-
 
 systemd service files
 ---------------------
