@@ -34,7 +34,9 @@ sudo rpi-eeprom-update
 sudo rpi-eeprom-update -a
 ```
 
-Once your system is updated, you can immediately install the pdx code so the moment you get the hardwire setup it will work correctly.  To install the pdx code download [pdx-base.deb](https://github.com/hoopsurfer/pdx), however if you wish to wait until you are booting from your SSD the instructions will remind you to do that as well.
+Once your system is updated, you can immediately install the pdx code so the moment you get the hardwire setup it will work correctly.  To install the pdx code download [pdx-base.deb](https://github.com/hoopsurfer/pdx), however if you wish to wait until you are booting from your SSD the instructions will remind you to do that as well.   Once you have pdx setup, you should be able to `reboot`, `shutdown`, or better `systemctl reboot` and `systemctl poweroff` which are the most correct way to actually reboot or power off a systemd-based OS.  If you do try this out try looing at `journalctl | grep pdx` to get a better idea of what is happening with the pdx power management code.
+
+Speaking of journals and the journalctl command, there is a very useful feature of this subsystem that enables looking at old boot logs which can be especially helpful.  I would suggest at this point you enable that feature with `sudo nano /etc/systemd/journald.conf` and uncomment the storage configuration line in `[Journal]` so it says `Storage=persistent` which allows you to look at previous logs.  Once you have rebooted, for example to look at the log from the previous boot use `journalctl -b -1` to look at any messages.
 
 Once your SD card is ready to go, power off your Pi4 and disconnect power so you can install all the required hardware.
 
