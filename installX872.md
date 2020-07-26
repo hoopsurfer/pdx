@@ -70,8 +70,6 @@ Mar 16 19:53:15 raspberrypi kernel: scsi 0:0:0:0: Direct-Access     NVME        
 
 Which shows it is using USB Attached Storage or UAS for communication.  If you have compatibility issues you may need to enable quirks in the boot command by adding`usb-storage.quirks=152d:0583:u` which is supposed to tune the kernel to use the best options for a specific adapter.  In this case it disables UAS.  It's not clear to me if this is needed at this point, but it does reduce performance and while the information is here, I am not using this myself.
 
-Speaking of journals and the journalctl command, there is a very useful feature of this subsystem that enables looking at old boot logs which can be especially helpful.  I would suggest at this point you enable that feature with `sudo nano /etc/systemd/journald.conf` and uncomment the storage configuration line in `[Journal]` so it says `Storage=persistent` which allows you to look at previous logs.  Once you have rebooted, for example to look at the log from the previous boot use `journalctl -b -1` to look at any messages.
-
 Next we are going to format the SSD deleting all the data on the device (if any) using the following commands:
 
 `sudo fdisk -l /dev/sda`    # to double check you have the right device as /dev/sda
